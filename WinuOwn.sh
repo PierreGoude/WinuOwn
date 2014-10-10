@@ -132,7 +132,7 @@ sudo cp System /etc/WinuOwn/SYSTEM &>/dev/null
   sudo umount /media/windows/ &>/dev/null   
   fi
 fi
-echo -ne '=                                                  2%\r' 
+echo  '=                                                  2%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -162,7 +162,7 @@ fi
           fi
         fi
         
-echo -ne '==                                                 4%\r' 
+echo  '==                                                 4%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -192,7 +192,7 @@ fi
               fi
             fi
  
-echo -ne '===                                                6%\r' 
+echo  '===                                                6%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -222,7 +222,7 @@ fi
                   fi
                 fi
  
-echo -ne '====                                               8%\r' 
+echo  '====                                               8%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -252,7 +252,7 @@ fi
                       fi
                     fi
  
-echo -ne '=====                                              10%\r' 
+echo  '=====                                              10%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -282,7 +282,7 @@ fi
                           fi
                         fi
  
-echo -ne '======                                             12%\r' 
+echo  '======                                             12%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -312,7 +312,7 @@ fi
                               fi
                             fi
  
-echo -ne '=======                                            14%\r' 
+echo  '=======                                            14%\r' 
  
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -342,7 +342,7 @@ fi
                                   fi
                                 fi
  
-echo -ne '========                                           16%\r' 
+echo  '========                                           16%\r' 
  
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -371,7 +371,7 @@ fi
                                       sudo umount /media/windows/ &>/dev/null   
                                       fi
                                     fi
-echo -ne '=========                                          18%\r' 
+echo  '=========                                          18%\r' 
  
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -400,7 +400,7 @@ fi
                                         sudo umount /media/windows/ &>/dev/null   
                                         fi
                                       fi
-echo -ne '==========                                         20%\r' 
+echo  '==========                                         20%\r' 
  
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -430,7 +430,7 @@ fi
                                           fi
                                         fi
 
-echo -ne '===========                                        22%\r' 
+echo  '===========                                        22%\r' 
  
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -459,7 +459,7 @@ fi
                                             sudo umount /media/windows/ &>/dev/null   
                                             fi
                                           fi
-echo -ne '============                                       24%\r' 
+echo  '============                                       24%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -488,7 +488,7 @@ fi
                                               sudo umount /media/windows/ &>/dev/null   
                                               fi
                                             fi
-echo -ne '=============                                      26%\r' 
+echo  '=============                                      26%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -517,7 +517,7 @@ fi
                                                 sudo umount /media/windows/ &>/dev/null   
                                                 fi
                                               fi
-echo -ne '==============                                     28%\r' 
+echo  '==============                                     28%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -546,7 +546,7 @@ fi
                                                   sudo umount /media/windows/ &>/dev/null   
                                                   fi
                                                 fi
-echo -ne '===============                                    30%\r' 
+echo  '===============                                    30%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -576,7 +576,7 @@ fi
                                                     fi
                                                   fi
 
-echo -ne '================                                   32%\r' 
+echo  '================                                   32%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -605,7 +605,7 @@ fi
                                                       sudo umount /media/windows/ &>/dev/null   
                                                       fi
                                                     fi
-echo -ne '==================                                 36%\r' 
+echo  '==================                                 36%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -632,7 +632,7 @@ sudo cp System /etc/WinuOwn/SYSTEM &>/dev/null
   sudo umount /media/windows/ &>/dev/null   
   fi
 fi
-echo -ne '===================                                38%\r' 
+echo  '===================                                38%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -661,7 +661,7 @@ fi
           sudo umount /media/windows/ &>/dev/null   
           fi
         fi
-echo -ne '====================                               40%\r' 
+echo  '====================                               40%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -690,7 +690,7 @@ fi
               sudo umount /media/windows/ &>/dev/null   
               fi
             fi
-echo -ne '=====================                              42%\r' 
+echo  '=====================                              42%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -719,7 +719,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '======================                             44%\r' 
+echo  '======================                             44%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -748,7 +748,7 @@ fi
                       sudo umount /media/windows/ &>/dev/null   
                       fi
                     fi
-echo -ne '=======================                            46%\r' 
+echo  '=======================                            46%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -777,7 +777,7 @@ fi
                           sudo umount /media/windows/ &>/dev/null   
                           fi
                         fi
-echo -ne '========================                           48%\r' 
+echo  '========================                           48%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -806,7 +806,7 @@ fi
                               sudo umount /media/windows/ &>/dev/null   
                               fi
                             fi
-echo -ne '=========================                          50%\r' 
+echo  '=========================                          50%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -835,7 +835,7 @@ fi
                                   sudo umount /media/windows/ &>/dev/null   
                                   fi
                                 fi
-echo -ne '==========================                         52%\r' 
+echo  '==========================                         52%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -864,7 +864,7 @@ fi
                                       sudo umount /media/windows/ &>/dev/null   
                                       fi
                                     fi
-echo -ne '===========================                        51%\r' 
+echo  '===========================                        51%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -893,7 +893,7 @@ fi
                                         sudo umount /media/windows/ &>/dev/null   
                                         fi
                                       fi
-echo -ne '============================                       56%\r' 
+echo  '============================                       56%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -922,7 +922,7 @@ fi
                                           sudo umount /media/windows/ &>/dev/null   
                                           fi
                                         fi
-echo -ne '=============================                      58%\r' 
+echo  '=============================                      58%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -951,7 +951,7 @@ fi
                                             sudo umount /media/windows/ &>/dev/null   
                                             fi
                                           fi
-echo -ne '==============================                     60%\r' 
+echo  '==============================                     60%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -980,7 +980,7 @@ fi
                                               sudo umount /media/windows/ &>/dev/null   
                                               fi
                                             fi
-echo -ne '===============================                    62%\r' 
+echo  '===============================                    62%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1009,7 +1009,7 @@ fi
                                                 sudo umount /media/windows/ &>/dev/null   
                                                 fi
                                               fi
-echo -ne '================================                   64%\r' 
+echo  '================================                   64%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1038,7 +1038,7 @@ fi
                                                   sudo umount /media/windows/ &>/dev/null   
                                                   fi
                                                 fi
-echo -ne '=================================                  66%\r' 
+echo  '=================================                  66%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1067,7 +1067,7 @@ fi
                                                     sudo umount /media/windows/ &>/dev/null   
                                                     fi
                                                   fi
-echo -ne '==================================                 68%\r' 
+echo  '==================================                 68%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1096,7 +1096,7 @@ fi
                                                       sudo umount /media/windows/ &>/dev/null   
                                                       fi
                                                     fi
-echo -ne '===================================                70%\r' 
+echo  '===================================                70%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1123,7 +1123,7 @@ sudo cp System /etc/WinuOwn/SYSTEM &>/dev/null
   sudo umount /media/windows/ &>/dev/null   
   fi
 fi
-echo -ne '====================================               72%\r' 
+echo  '====================================               72%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1152,7 +1152,7 @@ fi
           sudo umount /media/windows/ &>/dev/null   
           fi
         fi
-echo -ne '=====================================              74%\r' 
+echo  '=====================================              74%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1181,7 +1181,7 @@ fi
               sudo umount /media/windows/ &>/dev/null   
               fi
             fi
-echo -ne '======================================             76%\r' 
+echo  '======================================             76%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1210,7 +1210,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '=======================================            78%\r' 
+echo  '=======================================            78%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1239,7 +1239,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '========================================           80%\r' 
+echo  '========================================           80%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1268,7 +1268,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '=========================================          82%\r' 
+echo  '=========================================          82%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1297,7 +1297,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '==========================================         84%\r' 
+echo  '==========================================         84%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1326,7 +1326,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '===========================================        86%\r' 
+echo  '===========================================        86%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1355,7 +1355,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '============================================       88%\r' 
+echo  '============================================       88%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1384,7 +1384,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '=============================================      90%\r' 
+echo  '=============================================      90%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1413,7 +1413,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '==============================================     92%\r' 
+echo  '==============================================     92%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1442,7 +1442,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '================================================   96%\r' 
+echo  '================================================   96%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1471,7 +1471,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '=================================================  98%\r' 
+echo  '=================================================  98%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
@@ -1500,7 +1500,7 @@ fi
                   sudo umount /media/windows/ &>/dev/null   
                   fi
                 fi
-echo -ne '================================================== 100%\r' 
+echo  '================================================== 100%\r' 
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
