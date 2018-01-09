@@ -111,8 +111,8 @@ echo -e "${SUCCESS}  Scanning for Windows partitions  ${END}"
 echo -e "${BLACK}                                     ${END}"
 
 sudo mount /dev/sda0 /media/windows/ -t ntfs -o nls=utf8,umask=0222 &>/dev/null
-sam=$(sudo find /home/administrator -name "SAM")
-syst=$(sudo find /home/administrator -name "SYSTEM")
+sam=$(sudo find /media/windows/ -name "SAM")
+syst=$(sudo find /media/windows/ -name "SYSTEM")
 sudo cp $sam /etc/WinuOwn/
 sudo cp $syst /etc/WinuOwn/
 
