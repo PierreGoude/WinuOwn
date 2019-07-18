@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #####################################################################################################################
 #                                                                                                                   #
 #                     This script is written by Pierre aka Linoge, admin of Webbh4tt                                #
@@ -30,21 +29,21 @@
     BLACK=`echo "\033[109;30m"` #SPACE bg
     END=`echo "\033[0m"`
 # ~~~~~~~~~~  Environment Setup ~~~~~~~~~~ #
-#info 
-ver=$(echo WinuOwn_5.0)
+#info
+ver=$(echo WinuOwn_beta_3.0)
 #Author Pierre Goude
-    
-#################################Start script and validation####################################  
+
+#################################Start script and validation####################################
 
 thesstart_fn()
 {
-mkdir /etc/WinuOwn/safe &>/dev/null
+mkdir /etc/WinuOwn/safe > /dev/null 2>&1
   if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
 while true; do
-echo -e "${INFOS}     WinuOwn found that you already have login files        ${END}"
-echo -e "${INFOS}      in WinuOwn folder, you can crack those files          ${END}"
-echo -e "${INFOS}           or load in new files from Windows                ${END}"
+echo  "${INFOS}     WinuOwn found that you already have login files        ${END}"
+echo  "${INFOS}      in WinuOwn folder, you can crack those files          ${END}"
+echo  "${INFOS}           or load in new files from Windows                ${END}"
 read -p '(crack/load)?' crack load
    case $crack in
     [cC]* ) accounts_fn
@@ -54,7 +53,7 @@ read -p '(crack/load)?' crack load
     * ) echo 'Please answer load or crack.';;
    esac
 done
-else 
+else
 mount_fn
 
   fi
@@ -62,13 +61,13 @@ mount_fn
 
 thesstartetc_fn()
 {
-sudo mkdir /etc/WinuOwn/safe &>/dev/null
+ mkdir /etc/WinuOwn/safe > /dev/null 2>&1
   if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
 while true; do
-echo -e "${INFOS}     WinuOwn found that you already have login files        ${END}"
-echo -e "${INFOS}      in WinuOwn folder, you can crack those files          ${END}"
-echo -e "${INFOS}           or load in new files from Windows               ${END}"
+echo  "${INFOS}     WinuOwn found that you already have login files        ${END}"
+echo  "${INFOS}      in WinuOwn folder, you can crack those files          ${END}"
+echo  "${INFOS}           or load in new files from Windows               ${END}"
 read -p '(crack/load)?' crack load
    case $crack in
     [cC]* ) accountsetc_fn
@@ -78,7 +77,7 @@ read -p '(crack/load)?' crack load
     * ) echo 'Please answer load or crack.';;
    esac
 done
-else 
+else
 mount_fn
 
   fi
@@ -93,64 +92,1450 @@ filecontroll()
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
  if [ -d /root/.john/ ] ; then
  controll_fn
- else 
+ else
  controlletc_fn
  fi
-else 
-echo "" 
+else
+echo ""
 fi
 }
 
 mount_fn()
 {
-sudo rm /etc/WinuOwn/SAM && /etc/WinuOwn/SYSTEM &>/dev/null
+rm /etc/WinuOwn/SAM && /etc/WinuOwn/SYSTEM > /dev/null 2>&1
 clear
-sudo mkdir /media/windows &>/dev/null
-sudo umount /media/windows/ &>/dev/null
-echo -e "${SUCCESS}  Scanning for Windows partitions  ${END}"
-echo -e "${BLACK}                                     ${END}"
+mkdir /mnt/windows > /dev/null 2>&1
+umount /mnt/windows/ > /dev/null 2>&1
+echo  "${SUCCESS}  Scanning for Windows partitions  ${END}"
+echo  "${BLACK}                                     ${END}"
 
-sudo mount /dev/sda0 /media/windows/ -t ntfs -o nls=utf8,umask=0222 &>/dev/null
-sam=$(sudo find /media/windows/ -name "SAM")
-syst=$(sudo find /media/windows/ -name "SYSTEM")
-sudo cp $sam /etc/WinuOwn/
-sudo cp $syst /etc/WinuOwn/
+ntfs-3g -o ro /dev/sda0 /mnt/windows > /dev/null 2>&1
+if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+then
+cd /mnt/windows/WINDOWS/*32/*onfig
+ cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+ cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+ cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+ cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+ cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+  else
+  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+  then
+  cd /mnt/windows/*indows/*32/*onfig/
+   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+  else
+   umount /mnt/windows/  > /dev/null 2>&1
+  fi
+fi
+echo -n '=                                                  2%\r'
 
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
 fi
-                sudo mount /dev/sdd4 /media/windows/ -t ntfs -o nls=utf8,umask=0222 &>/dev/null
-                if  [ -d /media/windows/WINDOWS/*32/*onfig/ ];
+ntfs-3g -o ro /dev/sda1 /mnt/windows > /dev/null 2>&1
+        if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+        then
+        cd /mnt/windows/WINDOWS/*32/*onfig
+         cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+         cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+         cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+         cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+         cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+         umount /mnt/windows/  > /dev/null 2>&1
+          else
+          if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	      then
+          cd /mnt/windows/*indows/*32/*onfig/
+           cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+           cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+           cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+           cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+           cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+           umount /mnt/windows/  > /dev/null 2>&1
+          else
+           umount /mnt/windows/   > /dev/null 2>&1
+          fi
+        fi
+
+echo -n '==                                                 4%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+             ntfs-3g -o ro /dev/sda2 /mnt/windows > /dev/null 2>&1
+            if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+            then
+            cd /mnt/windows/WINDOWS/*32/*onfig
+             cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+             cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+             cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+             cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+             cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+             umount /mnt/windows/  > /dev/null 2>&1
+              else
+              if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	          then
+              cd /mnt/windows/*indows/*32/*onfig/
+               cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+               cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+               cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+               cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+               cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+               umount /mnt/windows/  > /dev/null 2>&1
+              else
+               umount /mnt/windows/  > /dev/null 2>&1
+              fi
+            fi
+
+echo -n '===                                                6%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sda3 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
                 then
-                cd /media/windows/WINDOWS/*32/*onfig
-                sudo cp SAM /etc/WinuOwn/SAM &>/dev/null
-                sudo cp SYSTEM /etc/WinuOwn/SYSTEM &>/dev/null
-                sudo cp sam /etc/WinuOwn/SAM &>/dev/null
-                sudo cp system /etc/WinuOwn/SYSTEM &>/dev/null
-                sudo cp System /etc/WinuOwn/SYSTEM &>/dev/null
-                sudo umount /media/windows/ &>/dev/null  	  
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
                   else
-                  if [ -d /media/windows/*indows/*32/*onfig/ ];
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
 	              then
-                  cd /media/windows/*indows/*32/*onfig/
-                  sudo cp SAM /etc/WinuOwn/SAM &>/dev/null
-                  sudo cp SYSTEM /etc/WinuOwn/SYSTEM &>/dev/null
-                  sudo cp sam /etc/WinuOwn/SAM &>/dev/null
-                  sudo cp system /etc/WinuOwn/SYSTEM &>/dev/null
-                  sudo cp System /etc/WinuOwn/SYSTEM &>/dev/null
-                  sudo umount /media/windows/ &>/dev/null		
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
                   else
-                  sudo umount /media/windows/ &>/dev/null   
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+
+echo -n '====                                               8%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                     ntfs-3g -o ro /dev/sda4 /mnt/windows > /dev/null 2>&1
+                    if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                    then
+                    cd /mnt/windows/WINDOWS/*32/*onfig
+                     cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                     cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                     cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                     cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                     cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                     umount /mnt/windows/  > /dev/null 2>&1
+                      else
+                      if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                  then
+                      cd /mnt/windows/*indows/*32/*onfig/
+                       cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                       cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                       cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                       cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                       cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                       umount /mnt/windows/  > /dev/null 2>&1
+                      else
+                       umount /mnt/windows/  > /dev/null 2>&1
+                      fi
+                    fi
+
+echo -n '=====                                              10%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                         ntfs-3g -o ro /dev/sda5 /mnt/windows > /dev/null 2>&1
+                        if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                        then
+                        cd /mnt/windows/WINDOWS/*32/*onfig
+                         cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                         cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                         cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                         cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                         cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                         umount /mnt/windows/  > /dev/null 2>&1
+                          else
+                          if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                      then
+                          cd /mnt/windows/*indows/*32/*onfig/
+                           cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                           cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                           cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                           cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                           cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                           umount /mnt/windows/  > /dev/null 2>&1
+                          else
+                           umount /mnt/windows/  > /dev/null 2>&1
+                          fi
+                        fi
+
+echo -n '======                                             12%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                             ntfs-3g -o ro /dev/sda6 /mnt/windows > /dev/null 2>&1
+                            if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                            then
+                            cd /mnt/windows/WINDOWS/*32/*onfig
+                             cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                             cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                             cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                             cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                             cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                             umount /mnt/windows/  > /dev/null 2>&1
+                              else
+                              if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                          then
+                              cd /mnt/windows/*indows/*32/*onfig/
+                               cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                               cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                               cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                               cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                               cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                               umount /mnt/windows/  > /dev/null 2>&1
+                              else
+                               umount /mnt/windows/  > /dev/null 2>&1
+                              fi
+                            fi
+
+echo -n '=======                                            14%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                 mount /dev/sda7 /mnt/windows/ -t ntfs -o nls=utf8,umask=0222
+                                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                then
+                                cd /mnt/windows/WINDOWS/*32/*onfig
+                                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                 umount /mnt/windows/  > /dev/null 2>&1
+                                  else
+                                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                              then
+                                  cd /mnt/windows/*indows/*32/*onfig/
+                                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                   umount /mnt/windows/  > /dev/null 2>&1
+                                  else
+                                   umount /mnt/windows/  > /dev/null 2>&1
+                                  fi
+                                fi
+
+echo -n '========                                           16%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                     mount /dev/sda0 /mnt/windows/ -t vfat -o umask=000
+                                    if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                    then
+                                    cd /mnt/windows/WINDOWS/*32/*onfig
+                                     cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                     cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                     cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                     cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                     cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                     umount /mnt/windows/  > /dev/null 2>&1
+                                      else
+                                      if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                  then
+                                      cd /mnt/windows/*indows/*32/*onfig/
+                                       cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                       cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                       cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                       cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                       cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                       umount /mnt/windows/  > /dev/null 2>&1
+                                      else
+                                       umount /mnt/windows/  > /dev/null 2>&1
+                                      fi
+                                    fi
+echo -n '=========                                          18%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                       mount /dev/sda0 /mnt/windows/ -t vfat -o umask=000
+                                      if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                      then
+                                      cd /mnt/windows/WINDOWS/*32/*onfig
+                                       cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                       cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                       cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                       cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                       cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                       umount /mnt/windows/  > /dev/null 2>&1
+                                        else
+                                        if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                    then
+                                        cd /mnt/windows/*indows/*32/*onfig/
+                                         cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                         cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                         cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                         cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                         cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                         umount /mnt/windows/  > /dev/null 2>&1
+                                        else
+                                         umount /mnt/windows/  > /dev/null 2>&1
+                                        fi
+                                      fi
+echo -n '==========                                         20%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                         mount /dev/sda1 /mnt/windows/ -t vfat -o umask=000
+                                        if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                        then
+                                        cd /mnt/windows/WINDOWS/*32/*onfig
+                                         cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                         cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                         cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                         cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                         cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                         umount /mnt/windows/  > /dev/null 2>&1
+                                          else
+                                          if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                      then
+                                          cd /mnt/windows/*indows/*32/*onfig/
+                                           cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                           cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                           cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                           cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                           cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                           umount /mnt/windows/  > /dev/null 2>&1
+                                          else
+                                           umount /mnt/windows/  > /dev/null 2>&1
+                                          fi
+                                        fi
+
+echo -n '===========                                        22%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                           mount /dev/sda2 /mnt/windows/ -t vfat -o umask=000
+                                          if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                          then
+                                          cd /mnt/windows/WINDOWS/*32/*onfig
+                                           cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                           cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                           cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                           cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                           cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                           umount /mnt/windows/  > /dev/null 2>&1
+                                            else
+                                            if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                        then
+                                            cd /mnt/windows/*indows/*32/*onfig/
+                                             cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                             cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                             cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                             cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                             cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                             umount /mnt/windows/  > /dev/null 2>&1
+                                            else
+                                             umount /mnt/windows/  > /dev/null 2>&1
+                                            fi
+                                          fi
+echo -n '============                                       24%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                             mount /dev/sda3 /mnt/windows/ -t vfat -o umask=000
+                                            if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                            then
+                                            cd /mnt/windows/WINDOWS/*32/*onfig
+                                             cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                             cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                             cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                             cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                             cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                             umount /mnt/windows/  > /dev/null 2>&1
+                                              else
+                                              if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                          then
+                                              cd /mnt/windows/*indows/*32/*onfig/
+                                               cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                               cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                               cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                               cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                               cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                               umount /mnt/windows/  > /dev/null 2>&1
+                                              else
+                                               umount /mnt/windows/  > /dev/null 2>&1
+                                              fi
+                                            fi
+echo -n '=============                                      26%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                               mount /dev/sda4 /mnt/windows/ -t vfat -o umask=000
+                                              if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                              then
+                                              cd /mnt/windows/WINDOWS/*32/*onfig
+                                               cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                               cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                               cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                               cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                               cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                               umount /mnt/windows/  > /dev/null 2>&1
+                                                else
+                                                if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                            then
+                                                cd /mnt/windows/*indows/*32/*onfig/
+                                                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                 umount /mnt/windows/  > /dev/null 2>&1
+                                                else
+                                                 umount /mnt/windows/  > /dev/null 2>&1
+                                                fi
+                                              fi
+echo -n '==============                                     28%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                                 mount /dev/sda5 /mnt/windows/ -t vfat -o umask=000
+                                                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                                then
+                                                cd /mnt/windows/WINDOWS/*32/*onfig
+                                                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                 umount /mnt/windows/  > /dev/null 2>&1
+                                                  else
+                                                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                              then
+                                                  cd /mnt/windows/*indows/*32/*onfig/
+                                                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                   umount /mnt/windows/  > /dev/null 2>&1
+                                                  else
+                                                   umount /mnt/windows/  > /dev/null 2>&1
+                                                  fi
+                                                fi
+echo -n '===============                                    30%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                                   mount /dev/sda6 /mnt/windows/ -t vfat -o umask=000
+                                                  if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                                  then
+                                                  cd /mnt/windows/WINDOWS/*32/*onfig
+                                                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                   umount /mnt/windows/  > /dev/null 2>&1
+                                                    else
+                                                    if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                                then
+                                                    cd /mnt/windows/*indows/*32/*onfig/
+                                                     cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                     cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                     cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                     cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                     cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                     umount /mnt/windows/  > /dev/null 2>&1
+                                                    else
+                                                     umount /mnt/windows/  > /dev/null 2>&1
+                                                    fi
+                                                  fi
+
+echo -n '================                                   32%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                                     mount /dev/sda7 /mnt/windows/ -t vfat -o umask=000
+                                                    if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                                    then
+                                                    cd /mnt/windows/WINDOWS/*32/*onfig
+                                                     cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                     cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                     cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                     cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                     cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                     umount /mnt/windows/  > /dev/null 2>&1
+                                                      else
+                                                      if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                                  then
+                                                      cd /mnt/windows/*indows/*32/*onfig/
+                                                       cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                       cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                       cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                       cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                       cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                       umount /mnt/windows/  > /dev/null 2>&1
+                                                      else
+                                                       umount /mnt/windows/  > /dev/null 2>&1
+                                                      fi
+                                                    fi
+echo -n '==================                                 36%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+ ntfs-3g -o ro /dev/sdb0 /mnt/windows > /dev/null 2>&1
+if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+then
+cd /mnt/windows/WINDOWS/*32/*onfig
+ cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+ cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+ cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+ cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+ cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+  else
+  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+  then
+  cd /mnt/windows/*indows/*32/*onfig/
+   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+  else
+   umount /mnt/windows/  > /dev/null 2>&1
+  fi
+fi
+echo -n '===================                                38%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+         ntfs-3g -o ro /dev/sdb1 /mnt/windows > /dev/null 2>&1
+        if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+        then
+        cd /mnt/windows/WINDOWS/*32/*onfig
+         cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+         cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+         cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+         cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+         cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+         umount /mnt/windows/  > /dev/null 2>&1
+          else
+          if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	      then
+          cd /mnt/windows/*indows/*32/*onfig/
+           cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+           cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+           cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+           cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+           cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+           umount /mnt/windows/  > /dev/null 2>&1
+          else
+           umount /mnt/windows/  > /dev/null 2>&1
+          fi
+        fi
+echo -n '====================                               40%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+             ntfs-3g -o ro /dev/sdb2 /mnt/windows > /dev/null 2>&1
+            if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+            then
+            cd /mnt/windows/WINDOWS/*32/*onfig
+             cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+             cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+             cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+             cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+             cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+             umount /mnt/windows/  > /dev/null 2>&1
+              else
+              if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	          then
+              cd /mnt/windows/*indows/*32/*onfig/
+               cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+               cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+               cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+               cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+               cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+               umount /mnt/windows/  > /dev/null 2>&1
+              else
+               umount /mnt/windows/  > /dev/null 2>&1
+              fi
+            fi
+echo -n '=====================                              42%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdb3 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '======================                             44%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                     ntfs-3g -o ro /dev/sdb4 /mnt/windows > /dev/null 2>&1
+                    if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                    then
+                    cd /mnt/windows/WINDOWS/*32/*onfig
+                     cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                     cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                     cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                     cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                     cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                     umount /mnt/windows/  > /dev/null 2>&1
+                      else
+                      if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                  then
+                      cd /mnt/windows/*indows/*32/*onfig/
+                       cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                       cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                       cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                       cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                       cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                       umount /mnt/windows/  > /dev/null 2>&1
+                      else
+                       umount /mnt/windows/  > /dev/null 2>&1
+                      fi
+                    fi
+echo -n '=======================                            46%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                         ntfs-3g -o ro /dev/sdb5 /mnt/windows > /dev/null 2>&1
+                        if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                        then
+                        cd /mnt/windows/WINDOWS/*32/*onfig
+                         cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                         cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                         cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                         cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                         cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                         umount /mnt/windows/  > /dev/null 2>&1
+                          else
+                          if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                      then
+                          cd /mnt/windows/*indows/*32/*onfig/
+                           cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                           cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                           cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                           cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                           cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                           umount /mnt/windows/  > /dev/null 2>&1
+                          else
+                           umount /mnt/windows/  > /dev/null 2>&1
+                          fi
+                        fi
+echo -n '========================                           48%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                             ntfs-3g -o ro /dev/sdb6 /mnt/windows > /dev/null 2>&1
+                            if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                            then
+                            cd /mnt/windows/WINDOWS/*32/*onfig
+                             cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                             cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                             cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                             cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                             cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                             umount /mnt/windows/  > /dev/null 2>&1
+                              else
+                              if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                          then
+                              cd /mnt/windows/*indows/*32/*onfig/
+                               cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                               cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                               cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                               cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                               cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                               umount /mnt/windows/  > /dev/null 2>&1
+                              else
+                               umount /mnt/windows/  > /dev/null 2>&1
+                              fi
+                            fi
+echo -n '=========================                          50%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                 ntfs-3g -o ro /dev/sdb7 /mnt/windows > /dev/null 2>&1
+                                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                then
+                                cd /mnt/windows/WINDOWS/*32/*onfig
+                                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                 umount /mnt/windows/  > /dev/null 2>&1
+                                  else
+                                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                              then
+                                  cd /mnt/windows/*indows/*32/*onfig/
+                                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                   umount /mnt/windows/  > /dev/null 2>&1
+                                  else
+                                   umount /mnt/windows/  > /dev/null 2>&1
+                                  fi
+                                fi
+echo -n '==========================                         52%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                     mount /dev/sdb0 /mnt/windows/ -t vfat -o umask=000
+                                    if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                    then
+                                    cd /mnt/windows/WINDOWS/*32/*onfig
+                                     cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                     cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                     cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                     cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                     cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                     umount /mnt/windows/  > /dev/null 2>&1
+                                      else
+                                      if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                  then
+                                      cd /mnt/windows/*indows/*32/*onfig/
+                                       cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                       cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                       cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                       cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                       cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                       umount /mnt/windows/  > /dev/null 2>&1
+                                      else
+                                       umount /mnt/windows/  > /dev/null 2>&1
+                                      fi
+                                    fi
+echo -n '===========================                        51%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                       mount /dev/sdb0 /mnt/windows/ -t vfat -o umask=000
+                                      if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                      then
+                                      cd /mnt/windows/WINDOWS/*32/*onfig
+                                       cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                       cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                       cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                       cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                       cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                       umount /mnt/windows/  > /dev/null 2>&1
+                                        else
+                                        if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                    then
+                                        cd /mnt/windows/*indows/*32/*onfig/
+                                         cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                         cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                         cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                         cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                         cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                         umount /mnt/windows/  > /dev/null 2>&1
+                                        else
+                                         umount /mnt/windows/  > /dev/null 2>&1
+                                        fi
+                                      fi
+echo -n '============================                       56%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                         mount /dev/sdb1 /mnt/windows/ -t vfat -o umask=000
+                                        if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                        then
+                                        cd /mnt/windows/WINDOWS/*32/*onfig
+                                         cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                         cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                         cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                         cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                         cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                         umount /mnt/windows/  > /dev/null 2>&1
+                                          else
+                                          if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                      then
+                                          cd /mnt/windows/*indows/*32/*onfig/
+                                           cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                           cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                           cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                           cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                           cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                           umount /mnt/windows/  > /dev/null 2>&1
+                                          else
+                                           umount /mnt/windows/  > /dev/null 2>&1
+                                          fi
+                                        fi
+echo -n '=============================                      58%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                           mount /dev/sdb2 /mnt/windows/ -t vfat -o umask=000
+                                          if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                          then
+                                          cd /mnt/windows/WINDOWS/*32/*onfig
+                                           cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                           cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                           cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                           cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                           cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                           umount /mnt/windows/  > /dev/null 2>&1
+                                            else
+                                            if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                        then
+                                            cd /mnt/windows/*indows/*32/*onfig/
+                                             cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                             cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                             cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                             cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                             cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                             umount /mnt/windows/  > /dev/null 2>&1
+                                            else
+                                             umount /mnt/windows/  > /dev/null 2>&1
+                                            fi
+                                          fi
+echo -n '==============================                     60%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                             mount /dev/sdb3 /mnt/windows/ -t vfat -o umask=000
+                                            if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                            then
+                                            cd /mnt/windows/WINDOWS/*32/*onfig
+                                             cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                             cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                             cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                             cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                             cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                             umount /mnt/windows/  > /dev/null 2>&1
+                                              else
+                                              if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                          then
+                                              cd /mnt/windows/*indows/*32/*onfig/
+                                               cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                               cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                               cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                               cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                               cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                               umount /mnt/windows/  > /dev/null 2>&1
+                                              else
+                                               umount /mnt/windows/  > /dev/null 2>&1
+                                              fi
+                                            fi
+echo -n '===============================                    62%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                               mount /dev/sdb4 /mnt/windows/ -t vfat -o umask=000
+                                              if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                              then
+                                              cd /mnt/windows/WINDOWS/*32/*onfig
+                                               cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                               cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                               cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                               cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                               cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                               umount /mnt/windows/  > /dev/null 2>&1
+                                                else
+                                                if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                            then
+                                                cd /mnt/windows/*indows/*32/*onfig/
+                                                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                 umount /mnt/windows/  > /dev/null 2>&1
+                                                else
+                                                 umount /mnt/windows/  > /dev/null 2>&1
+                                                fi
+                                              fi
+echo -n '================================                   64%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                                 mount /dev/sdb5 /mnt/windows/ -t vfat -o umask=000
+                                                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                                then
+                                                cd /mnt/windows/WINDOWS/*32/*onfig
+                                                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                 umount /mnt/windows/  > /dev/null 2>&1
+                                                  else
+                                                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                              then
+                                                  cd /mnt/windows/*indows/*32/*onfig/
+                                                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                   umount /mnt/windows/  > /dev/null 2>&1
+                                                  else
+                                                   umount /mnt/windows/  > /dev/null 2>&1
+                                                  fi
+                                                fi
+echo -n '=================================                  66%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                                   mount /dev/sdb6 /mnt/windows/ -t vfat -o umask=000
+                                                  if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                                  then
+                                                  cd /mnt/windows/WINDOWS/*32/*onfig
+                                                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                   umount /mnt/windows/  > /dev/null 2>&1
+                                                    else
+                                                    if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                                then
+                                                    cd /mnt/windows/*indows/*32/*onfig/
+                                                     cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                     cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                     cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                     cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                     cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                     umount /mnt/windows/  > /dev/null 2>&1
+                                                    else
+                                                     umount /mnt/windows/  > /dev/null 2>&1
+                                                    fi
+                                                  fi
+echo -n '==================================                 68%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                                                     mount /dev/sdb7 /mnt/windows/ -t vfat -o umask=000
+                                                    if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                                                    then
+                                                    cd /mnt/windows/WINDOWS/*32/*onfig
+                                                     cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                     cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                     cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                     cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                     cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                     umount /mnt/windows/  > /dev/null 2>&1
+                                                      else
+                                                      if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	                                                  then
+                                                      cd /mnt/windows/*indows/*32/*onfig/
+                                                       cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                       cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                       cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                                                       cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                                                       cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                                                       umount /mnt/windows/  > /dev/null 2>&1
+                                                      else
+                                                       umount /mnt/windows/  > /dev/null 2>&1
+                                                      fi
+                                                    fi
+echo -n '===================================                70%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+ mount /dev/sda8 /mnt/windows/ -t ntfs -o nls=utf8,umask=0222
+if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+then
+cd /mnt/windows/WINDOWS/*32/*onfig
+ cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+ cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+ cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+ cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+ cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+  else
+  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+  then
+  cd /mnt/windows/*indows/*32/*onfig/
+   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+  else
+   umount /mnt/windows/  > /dev/null 2>&1
+  fi
+fi
+echo -n '====================================               72%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+         mount /dev/sda9 /mnt/windows/ -t ntfs -o nls=utf8,umask=0222
+        if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+        then
+        cd /mnt/windows/WINDOWS/*32/*onfig
+         cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+         cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+         cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+         cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+         cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+         umount /mnt/windows/  > /dev/null 2>&1
+          else
+          if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	      then
+          cd /mnt/windows/*indows/*32/*onfig/
+           cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+           cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+           cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+           cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+           cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+           umount /mnt/windows/  > /dev/null 2>&1
+          else
+           umount /mnt/windows/  > /dev/null 2>&1
+          fi
+        fi
+echo -n '=====================================              74%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+             ntfs-3g -o ro /dev/sdb8 /mnt/windows > /dev/null 2>&1
+            if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+            then
+            cd /mnt/windows/WINDOWS/*32/*onfig
+             cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+             cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+             cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+             cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+             cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+             umount /mnt/windows/  > /dev/null 2>&1
+              else
+              if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	          then
+              cd /mnt/windows/*indows/*32/*onfig/
+               cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+               cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+               cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+               cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+               cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+               umount /mnt/windows/  > /dev/null 2>&1
+              else
+               umount /mnt/windows/  > /dev/null 2>&1
+              fi
+            fi
+echo -n '======================================             76%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdb9 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '=======================================            78%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdc1 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '========================================           80%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdc2 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '=========================================          82%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdc3 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '==========================================         84%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdc4 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '===========================================        86%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdc5 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '============================================       88%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdc6 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '=============================================      90%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdc7 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '==============================================     92%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdd1 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '================================================   96%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdd2 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '=================================================  98%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdd3 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  fi
+                fi
+echo -n '================================================== 100%\r'
+
+if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
+filecontroll
+fi
+                 ntfs-3g -o ro /dev/sdd4 /mnt/windows > /dev/null 2>&1
+                if  [ -d /mnt/windows/WINDOWS/*32/*onfig/ ];
+                then
+                cd /mnt/windows/WINDOWS/*32/*onfig
+                 cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                 cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                 cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                 umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                  if [ -d /mnt/windows/*indows/*32/*onfig/ ];
+	              then
+                  cd /mnt/windows/*indows/*32/*onfig/
+                   cp SAM /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp SYSTEM /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp sam /etc/WinuOwn/SAM > /dev/null 2>&1
+                   cp system /etc/WinuOwn/SYSTEM > /dev/null 2>&1
+                   cp System /etc/WinuOwn/SYSTEM  > /dev/null 2>&1
+                   umount /mnt/windows/  > /dev/null 2>&1
+                  else
+                   umount /mnt/windows/  > /dev/null 2>&1
                   fi
                 fi
 if  [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ] ; then
 filecontroll
 else
 clear
-echo -e "${WARNING} WinuOwn cannot find Windows partition please   ${END}"
-echo -e "${WARNING} check that you are on a PC that have Windows   ${END}"
-sleep 5	
-echo -e "${WARP} Going back to menu   ${END}"
+echo  "${WARNING} WinuOwn cannot find Windows partition please   ${END}"
+echo  "${WARNING} check that you are on a PC that have Windows   ${END}"
+sleep 5
+echo  "${WARP} Going back to menu   ${END}"
 sleep 2
 clear
 show_menu
@@ -163,20 +1548,20 @@ fi
 manualcontroll()
 {
 if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
-echo -e "${SUCCESS}                                                            ${END}"
-echo -e "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
-echo -e "${SUCCESS}                                                            ${END}"
+then
+echo  "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
+echo  "${SUCCESS}                                                            ${END}"
 sleep 1
 accounts_fn
-else 
+else
 while true; do
    read -p 'I see no Windows partition in there... do you wish to try again?? (y/n)?' yn
    case $yn in
     [Yy]* ) manually_fn
             break;;
-    [Nn]* ) echo "Exiting WinuOwn"
-            sleep 2        
+    [Nn]* ) echo "Exiting" $ver
+            sleep 2
             exit ;;
     * ) echo 'Please answer yes or no.';;
    esac
@@ -187,16 +1572,16 @@ fi
 controller1()
 {
 if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
 while true; do
-echo -e "${SUCCESS}                                                            ${END}"
-echo -e "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
-echo -e "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
+echo  "${SUCCESS}                                                            ${END}"
    read -p 'Do you want to start John the ripper? (y/n)?' yn
    case $yn in
     [Yy]* ) accounts_fn
             break;;
-    [Nn]* ) echo -e "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
+    [Nn]* ) echo  "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
             sleep 4
             clear
             show_menu
@@ -204,7 +1589,7 @@ echo -e "${SUCCESS}                                                            $
     * ) echo 'Please answer yes or no.';;
    esac
 done
-else 
+else
 mount2_fn
 fi
 }
@@ -212,16 +1597,16 @@ fi
 controll1_fn()
 {
 if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
 while true; do
-echo -e "${SUCCESS}                                                            ${END}"
-echo -e "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
-echo -e "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
+echo  "${SUCCESS}                                                            ${END}"
    read -p 'Do you want to start John the ripper? (y/n)?' yn
    case $yn in
     [Yy]* ) accounts_fn
             break;;
-    [Nn]* ) echo -e "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
+    [Nn]* ) echo  "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
             sleep 4
             clear
             show_menu
@@ -229,8 +1614,8 @@ echo -e "${SUCCESS}                                                            $
     * ) echo 'Please answer yes or no.';;
    esac
 done
-else 
-echo -e "${INFOS}   Windows partition is hard to find.. Enabling deepscan    ${END}"
+else
+echo  "${INFOS}   Windows partition is hard to find.. Enabling deepscan    ${END}"
 sleep 2
 mount3_fn
 fi
@@ -239,16 +1624,16 @@ fi
 controll2_fn()
 {
 if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
 while true; do
-echo -e "${SUCCESS}                                                            ${END}"
-echo -e "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
-echo -e "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
+echo  "${SUCCESS}                                                            ${END}"
    read -p 'Do you want to start John the ripper? (y/n)?' yn
    case $yn in
     [Yy]* ) accounts_fn
             break;;
-    [Nn]* ) echo -e "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
+    [Nn]* ) echo  "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
             sleep 4
             clear
             show_menu
@@ -256,8 +1641,8 @@ echo -e "${SUCCESS}                                                            $
     * ) echo 'Please answer yes or no.';;
    esac
 done
-else 
-echo -e "${INFOS}   Windows partition is hard to find.. scanning for fat32 partitions    ${END}"
+else
+echo  "${INFOS}   Windows partition is hard to find.. scanning for fat32 partitions    ${END}"
 sleep 2
 mount4_fn
 fi
@@ -266,16 +1651,16 @@ fi
 controll3_fn()
 {
 if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
 while true; do
-echo -e "${SUCCESS}                                                            ${END}"
-echo -e "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
-echo -e "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
+echo  "${SUCCESS}                                                            ${END}"
    read -p 'Do you want to start John the ripper? (y/n)?' yn
    case $yn in
     [Yy]* ) accounts_fn
             break;;
-    [Nn]* ) echo -e "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
+    [Nn]* ) echo  "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
             sleep 4
             clear
             show_menu
@@ -283,9 +1668,9 @@ echo -e "${SUCCESS}                                                            $
     * ) echo 'Please answer yes or no.';;
    esac
 done
-else 
+else
 
-echo -e "${WARNING}                (example of partition is sda2 or sdb1)                 ${END}"
+echo  "${WARNING}                (example of partition is sda2 or sdb1)                 ${END}"
 manually_fn
 fi
 }
@@ -294,17 +1679,19 @@ fi
 
 controll_fn()
 {
+clear
 if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
 while true; do
-echo -e "${SUCCESS}                                                            ${END}"
-echo -e "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
-echo -e "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
+echo  "${SUCCESS}                                                            ${END}"
    read -p 'Do you want to start John the ripper? (y/n)?' yn
    case $yn in
-    [Yy]* ) accounts_fn
+    [Yy]* ) clear
+            accounts_fn
             break;;
-    [Nn]* ) echo -e "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
+    [Nn]* ) echo  "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
             sleep 4
             clear
             show_menu
@@ -312,8 +1699,8 @@ echo -e "${SUCCESS}                                                            $
     * ) echo 'Please answer yes or no.';;
    esac
 done
-else 
-echo -e "${INFOS}   Windows partition is hard to find.. Enabling deepscan    ${END}"
+else
+echo  "${INFOS}   Windows partition is hard to find.. Enabling deepscan    ${END}"
 sleep 2
 mount3_fn
 fi
@@ -321,16 +1708,16 @@ fi
 controlletc_fn()
 {
 if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
 while true; do
-echo -e "${SUCCESS}                                                            ${END}"
-echo -e "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
-echo -e "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}                                                            ${END}"
+echo  "${SUCCESS}      Windows partition was found and files are loaded      ${END}"
+echo  "${SUCCESS}                                                            ${END}"
    read -p 'Do you want to start John the ripper? (y/n)?' yn
    case $yn in
     [Yy]* ) accounts_fn
             break;;
-    [Nn]* ) echo -e "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
+    [Nn]* ) echo  "${INFOS}   Files are now stored in WinuOwn-folder for later cracking           ${END}"
             sleep 4
             clear
             show_menu
@@ -338,8 +1725,8 @@ echo -e "${SUCCESS}                                                            $
     * ) echo 'Please answer yes or no.';;
    esac
 done
-else 
-echo -e "${INFOS}   Windows partition is hard to find.. Enabling deepscan    ${END}"
+else
+echo  "${INFOS}   Windows partition is hard to find.. Enabling deepscan    ${END}"
 sleep 2
 mount3_fn
 fi
@@ -351,9 +1738,9 @@ fi
 accounts_fn()
 {
 while true; do
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${INFOS}Do you wish to crack all accounts or target a specific user?${END}"
-echo -e "${INFOS}                                                            ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${INFOS}Do you wish to crack all accounts or target a specific user?${END}"
+echo  "${INFOS}                                                            ${END}"
 read -p '(all/target)?' all target
    case $all in
     [aA]* ) crackall_fn
@@ -370,9 +1757,9 @@ done
 accountsetc_fn()
 {
 while true; do
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${INFOS}Do you wish to crack all accounts or target a specific user?${END}"
-echo -e "${INFOS}                                                            ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${INFOS}Do you wish to crack all accounts or target a specific user?${END}"
+echo  "${INFOS}                                                            ${END}"
 read -p '(all/target)?' all target
    case $all in
     [aA]* ) crackalletc_fn
@@ -388,52 +1775,52 @@ done
 
 target_fn()
 {
-echo -e "${BLACK}                                                                   ${END}"
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${INFOS}               prepearing john the ripper                   ${END}"
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${BLACK}                                                                   ${END}"
+echo  "${BLACK}                                                                   ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${INFOS}               prepearing john the ripper                   ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${BLACK}                                                                   ${END}"
 
 cd /etc/WinuOwn
 bkhive SYSTEM bootkey
 sleep 1
-samdump2 SAM bootkey >/etc/WinuOwn/hash.txt
+samdump2 SAM bootkey > /etc/WinuOwn/hash.txt
 cd /root/.john/
 if [ -d /root/.john/potbackup ]
-then 
+then
 mv john.pot /root/.john/potbackup/john.pot
-else 
-mkdir /root/.john/potbackup/ &>/dev/null
-cat john.pot >> johnbackup.pot &>/dev/null
+else
+mkdir /root/.john/potbackup/
+cat john.pot >> johnbackup.pot
 mv john.pot /root/.john/potbackup/john.pot
 fi
 
-clear 
-echo -e "${INFOS}listing users....${END}"
+clear
+echo  "${INFOS}listing users....${END}"
 cat /etc/WinuOwn/hash.txt
-echo -e "${SUCCESS}please type in witch user you wish to crack${END}"
+echo  "${SUCCESS}please type in witch user you wish to crack${END}"
 read User
 clear
-echo -e "${INFOS}             Starting John the ripper                   ${END}"
+echo  "${INFOS}             Starting John the ripper                   ${END}"
 sleep 2
 clear
-echo -e "${WARP}  Cracking....${END}"
+echo  "${WARP}  Cracking....${END}"
 sleep 1
 john /etc/WinuOwn/hash.txt --session=prehash --format=nt -users:$User > /etc/WinuOwn/tmp.txt
 clear
-echo -e "${SUCCESS} Passwords       Accounts ${END}"
-echo -e "${BLACK}  "${SUCCESS}v${END}  ---------------${END} "${SUCCESS}v${END}"           
-echo -e "${BLACK}  "${SUCCESS}v${END}  ---------------${END} "${SUCCESS}v${END}"
-sed '1d' /etc/WinuOwn/tmp.txt 
+echo  "${SUCCESS} Passwords       Accounts ${END}"
+echo  "${BLACK}  "${SUCCESS}v${END}  ---------------${END} "${SUCCESS}v${END}"
+echo  "${BLACK}  "${SUCCESS}v${END}  ---------------${END} "${SUCCESS}v${END}"
+sed '1d' /etc/WinuOwn/tmp.txt
 cat john.pot >> johnbackup.pot
-echo -e "${BLACK}                                                                 ${END}"
-echo -e "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
+echo  "${BLACK}                                                                 ${END}"
+echo  "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
    read -p 'Go back to menu? (y/n)?' yn
    case $yn in
-    [Yy]* ) echo -e "${WARP}                 Going back to menu                              ${END}"
-            sleep 1 
+    [Yy]* ) echo  "${WARP}                 Going back to menu                              ${END}"
+            sleep 1
             clear
             show_menu;;
     [Nn]* ) echo "Exiting" $ver
@@ -452,36 +1839,36 @@ sleep 1
 samdump2 SAM bootkey >/etc/WinuOwn/hash.txt
 cd /root/.john/
 if [ -d /root/.john/potbackup ]
-then 
+then
 mv john.pot /root/.john/potbackup/john.pot
 clear
-echo -e "${INFOS}             Starting John the ripper                   ${END}"
+echo  "${INFOS}             Starting John the ripper                   ${END}"
 sleep 2
-else 
-mkdir /root/.john/potbackup/ &>/dev/null
+else
+mkdir /root/.john/potbackup/
 mv john.pot /root/.john/potbackup/john.pot
 clear
-echo -e "${INFOS}             Starting John the ripper                   ${END}"
+echo  "${INFOS}             Starting John the ripper                   ${END}"
 sleep 2
 fi
 clear
-echo -e "${WARP}  Cracking....${END}"
+echo  "${WARP}  Cracking....${END}"
 sleep 1
-echo -e "${SUCCESS} Passwords       Accounts ${END}"
-echo -e "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"           
-echo -e "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"                                    
-john /etc/WinuOwn/hash.txt --session=prehash --format=nt 
+echo  "${SUCCESS} Passwords       Accounts ${END}"
+echo  "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"
+echo  "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"
+john /etc/WinuOwn/hash.txt --session=prehash --format=nt
 cat john.pot >> johnbackup.pot
-echo -e "${BLACK}                                                                 ${END}"
-echo -e "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
+echo  "${BLACK}                                                                 ${END}"
+echo  "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
    read -p 'Go back to menu? (y/n)?' yn
    case $yn in
-    [Yy]* ) echo -e "${WARP}                 Going back to menu                              ${END}"
+    [Yy]* ) echo  "${WARP}                 Going back to menu                              ${END}"
             sleep 1
             clear
             show_menu;;
     [Nn]* ) echo "Exiting" $ver
-            sleep 2        
+            sleep 2
             exit ;;
     * ) echo 'Please answer yes or no.';;
    esac
@@ -491,52 +1878,52 @@ echo -e "${SUCCESS}                  WinuOwn is done cracking now               
 ####################################file cracking etc############################################
 targetetc_fn()
 {
-echo -e "${BLACK}                                                                   ${END}"
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${INFOS}               prepearing john the ripper                   ${END}"
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${INFOS}                                                            ${END}"
-echo -e "${BLACK}                                                                   ${END}"
+echo  "${BLACK}                                                                   ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${INFOS}               prepearing john the ripper                   ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${INFOS}                                                            ${END}"
+echo  "${BLACK}                                                                   ${END}"
 
-sudo cp /etc/john/run/password.lst /etc/john/password.lst 
+ cp /etc/john/run/password.lst /etc/john/password.lst
 cd /etc/WinuOwn
-sudo bkhive SYSTEM bootkey
+ bkhive SYSTEM bootkey
 sleep 1
 samdump2 SAM bootkey >/etc/WinuOwn/hash.txt
 cd /usr/share/john/
 if [ -d /usr/share/john/potbackup ]
-then 
-sudo mv john.pot /usr/share/john/potbackup/john.pot
-else 
-sudo mkdir /usr/share/john/potbackup/ &>/dev/null
+then
+ mv john.pot /usr/share/john/potbackup/john.pot
+else
+ mkdir /usr/share/john/potbackup/
 cat john.pot >> johnbackup.pot
-sudo mv john.pot /usr/share/john/potbackup/john.pot
+ mv john.pot /usr/share/john/potbackup/john.pot
 fi
 
 clear
-echo -e "${INFOS}listing users....${END}"
+echo  "${INFOS}listing users....${END}"
 cat /etc/WinuOwn/hash.txt
-echo -e "${SUCCESS}please type in witch user you wish to crack${END}"
+echo  "${SUCCESS}please type in witch user you wish to crack${END}"
 read User
 clear
-echo -e "${INFOS}             Starting John the ripper                   ${END}"
+echo  "${INFOS}             Starting John the ripper                   ${END}"
 sleep 2
 clear
-echo -e "${WARP}  Cracking..ETC..${END}"
+echo  "${WARP}  Cracking..ETC..${END}"
 sleep 1
-echo -e "${SUCCESS} Passwords       Accounts ${END}"
-echo -e "${BLACK}  "${SUCCESS}v${END}  ---------------${END} "${SUCCESS}v${END}"           
-echo -e "${BLACK}  "${SUCCESS}v${END}  ---------------${END} "${SUCCESS}v${END}"
+echo  "${SUCCESS} Passwords       Accounts ${END}"
+echo  "${BLACK}  "${SUCCESS}v${END}  ---------------${END} "${SUCCESS}v${END}"
+echo  "${BLACK}  "${SUCCESS}v${END}  ---------------${END} "${SUCCESS}v${END}"
 cd /etc/john
-sudo chmod +x john.log
+ chmod +x john.log
 john /etc/WinuOwn/hash.txt --incremental --format=LM -users:$User
-echo -e "${BLACK}                                                                 ${END}"
-echo -e "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
+echo  "${BLACK}                                                                 ${END}"
+echo  "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
    read -p 'Go back to menu? (y/n)?' yn
    case $yn in
-    [Yy]* ) echo -e "${WARP}                 Going back to menu                              ${END}"
-            sleep 1 
+    [Yy]* ) echo  "${WARP}                 Going back to menu                              ${END}"
+            sleep 1
             clear
             show_etcmenu;;
     [Nn]* ) echo "Exiting" $ver
@@ -555,37 +1942,37 @@ sleep 1
 samdump2 SAM bootkey >/etc/WinuOwn/hash.txt
 cd /etc/john/
 if [ -d /etc/john/potbackup ]
-then 
+then
 mv john.pot /etc/john/potbackup/john.pot
 clear
-echo -e "${INFOS}             Starting John the ripper                   ${END}"
+echo  "${INFOS}             Starting John the ripper                   ${END}"
 sleep 2
-else 
-mkdir /etc/john/potbackup/ &>/dev/null
+else
+mkdir /etc/john/potbackup/
 mv john.pot /etc/john/potbackup/john.pot
 clear
-echo -e "${INFOS}             Starting John the ripper                   ${END}"
+echo  "${INFOS}             Starting John the ripper                   ${END}"
 sleep 2
 fi
 clear
-echo -e "${WARP}  Cracking....${END}"
+echo  "${WARP}  Cracking....${END}"
 sleep 1
-echo -e "${SUCCESS} Passwords       Accounts ${END}"
-echo -e "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"           
-echo -e "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"                                    
+echo  "${SUCCESS} Passwords       Accounts ${END}"
+echo  "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"
+echo  "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"
 cd /etc/john
-sudo chmod +x john.log
-john /etc/WinuOwn/hash.txt --incremental --format=LM 
-echo -e "${BLACK}                                                                 ${END}"
-echo -e "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
+ chmod +x john.log
+john /etc/WinuOwn/hash.txt --incremental --format=LM
+echo  "${BLACK}                                                                 ${END}"
+echo  "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
    read -p 'Go back to menu? (y/n)?' yn
    case $yn in
-    [Yy]* ) echo -e "${WARP}                 Going back to menu                              ${END}"
+    [Yy]* ) echo  "${WARP}                 Going back to menu                              ${END}"
             sleep 1
             clear
             show_etcmenu;;
     [Nn]* ) echo "Exiting" $ver
-            sleep 2        
+            sleep 2
             exit ;;
     * ) echo 'Please answer yes or no.';;
    esac
@@ -597,24 +1984,24 @@ echo -e "${SUCCESS}                  WinuOwn is done cracking now               
 remove_fn()
 {
 if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
    read -p 'Are you sure you want to remove ALL files and hashes in WinuOwn-folder?  (y/n)?' yn
    case $yn in
     [Yy]* ) echo '';;
-           
+
     [Nn]* ) show_menu ;;
     * ) echo 'Please answer yes or no.';;
    esac
-rm /etc/WinuOwn/SAM &>/dev/null
-rm /etc/WinuOwn/SYSTEM &>/dev/null
-rm /etc/WinuOwn/hash.txt &>/dev/null
-rm /etc/WinuOwn/bootkey &>/dev/null
-echo -e "${SUCCESS}  Files are now removed  ${END}"
+rm /etc/WinuOwn/SAM
+rm /etc/WinuOwn/SYSTEM
+rm /etc/WinuOwn/hash.txt
+rm /etc/WinuOwn/bootkey
+echo  "${SUCCESS}  Files are now removed  ${END}"
 sleep 2
 clear
 show_menu
-else 
-echo -e "${WARNING}  No Windows-login files are in WinuOwn-folder  ${END}"
+else
+echo  "${WARNING}  No Windows-login files are in WinuOwn-folder  ${END}"
 sleep 4
 clear
 show_menu
@@ -631,24 +2018,24 @@ show_menu
 removeetc_fn()
 {
 if [ -f /etc/WinuOwn/SYSTEM ] && [ -f /etc/WinuOwn/SAM ]
-then 
+then
    read -p 'Are you sure you want to remove ALL files and hashes in WinuOwn-folder?  (y/n)?' yn
    case $yn in
     [Yy]* ) echo '';;
-           
+
     [Nn]* ) show_etcmenu ;;
     * ) echo 'Please answer yes or no.';;
    esac
-rm /etc/WinuOwn/SAM &>/dev/null
-rm /etc/WinuOwn/SYSTEM &>/dev/null
-rm /etc/WinuOwn/hash.txt &>/dev/null
-rm /etc/WinuOwn/bootkey &>/dev/null
-echo -e "${SUCCESS}  Files are now removed  ${END}"
+rm /etc/WinuOwn/SAM
+rm /etc/WinuOwn/SYSTEM
+rm /etc/WinuOwn/hash.txt
+rm /etc/WinuOwn/bootkey
+echo  "${SUCCESS}  Files are now removed  ${END}"
 sleep 2
 clear
 show_etcmenu
-else 
-echo -e "${WARNING}  No Windows-login files are in WinuOwn-folder  ${END}"
+else
+echo  "${WARNING}  No Windows-login files are in WinuOwn-folder  ${END}"
 sleep 4
 clear
 show_etcmenu
@@ -669,8 +2056,8 @@ then
 leafpad /root/.john/johnbackup.pot
 clear
 show_menu
-else 
-echo -e "${WARNING}No passwords stored${END}"
+else
+echo  "${WARNING}No passwords stored${END}"
 sleep 3
 clear
 show_menu
@@ -686,8 +2073,8 @@ then
 gedit /etc/john/johnbackup.pot
 clear
 show_etcmenu
-else 
-echo -e "${WARNING}No passwords stored${END}"
+else
+echo  "${WARNING}No passwords stored${END}"
 sleep 3
 clear
 show_etcmenu
@@ -700,20 +2087,20 @@ restore_fn()
 {
 if [ -f /root/.john/prehash.rec ]
 then
-echo -e "${SUCCESS} Passwords       Accounts ${END}"
-echo -e "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"           
-echo -e "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}" 
+echo  "${SUCCESS} Passwords       Accounts ${END}"
+echo  "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"
+echo  "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"
 john --restore=prehash
-echo -e "${BLACK}                                                                 ${END}"
-echo -e "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
+echo  "${BLACK}                                                                 ${END}"
+echo  "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
    read -p 'Go back to menu? (y/n)?' yn
    case $yn in
-    [Yy]* ) echo -e "${WARP}                 Going back to menu                              ${END}"
+    [Yy]* ) echo  "${WARP}                 Going back to menu                              ${END}"
             sleep 1
             clear
             show_menu;;
     [Nn]* ) echo "Exiting" $ver
-            sleep 2        
+            sleep 2
             exit ;;
     * ) echo 'Please answer yes or no.';;
    esac
@@ -721,7 +2108,7 @@ echo -e "${SUCCESS}                  WinuOwn is done cracking now               
 
 else
 clear
-echo -e "${WARNING} No previous sessions stored ${END}"
+echo  "${WARNING} No previous sessions stored ${END}"
 sleep 2
 clear
 fi
@@ -734,20 +2121,20 @@ restoreetc_fn()
 {
 if [ -f /etc/john/prehash.rec ]
 then
-echo -e "${SUCCESS} Passwords       Accounts ${END}"
-echo -e "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"           
-echo -e "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}" 
+echo  "${SUCCESS} Passwords       Accounts ${END}"
+echo  "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"
+echo  "${SUCCESS}   v ${END}"  -------------${END} "${SUCCESS}v${END}"
 john --restore=prehash
-echo -e "${BLACK}                                                                 ${END}"
-echo -e "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
+echo  "${BLACK}                                                                 ${END}"
+echo  "${SUCCESS}                  WinuOwn is done cracking now                    ${END}"
    read -p 'Go back to menu? (y/n)?' yn
    case $yn in
-    [Yy]* ) echo -e "${WARP}                 Going back to menu                              ${END}"
+    [Yy]* ) echo  "${WARP}                 Going back to menu                              ${END}"
             sleep 1
             clear
             show_etcmenu;;
     [Nn]* ) echo "Exiting" $ver
-            sleep 2        
+            sleep 2
             exit ;;
     * ) echo 'Please answer yes or no.';;
    esac
@@ -755,7 +2142,7 @@ echo -e "${SUCCESS}                  WinuOwn is done cracking now               
 
 else
 clear
-echo -e "${WARNING} No previous sessions stored ${END}"
+echo  "${WARNING} No previous sessions stored ${END}"
 sleep 2
 clear
 fi
@@ -766,7 +2153,7 @@ show_etcmenu
 
 installation1_fn()
 {
-if [ -d /root/.john ]
+if [ -d /etc/john ]
 then
 echo""
 else
@@ -775,21 +2162,21 @@ sleep 4
 clear
 show_install
 fi
-echo 
-sudo mkdir /etc/WinuOwn &>/dev/null
-sudo mkdir /etc/WinuOwn/safe &>/dev/null
+echo
+mkdir /etc/WinuOwn
+mkdir /etc/WinuOwn/safe > /dev/null 2>&1
 if [ -d /etc/WinuOwn ]
-then 
-echo -e "${NORMAL}        WinuOwn is now installed                        ${NORMAL}"
+then
+echo  "${NORMAL}        WinuOwn is now installed                        ${NORMAL}"
 sleep 3
 echo "Going to menu"
 sleep 2
 clear
 newworld_fn
 else
-echo -e "${WARNING}Something went wrong and WinuOwn was not installed ${END}"
+echo  "${WARNING}Something went wrong and WinuOwn was not installed ${END}"
 sleep 4
-echo -e "${WARNING}                     Bye Bye                           ${END}"
+echo  "${WARNING}                     Bye Bye                           ${END}"
 sleep 3
 exit
 fi
@@ -797,8 +2184,8 @@ fi
 
 installation2_fn()
 {
-if [ -d /root/.john ] 
-then 
+if [ -d /etc/john ]
+then
 echo " I might be a program... but im not totaly retarded you know.. !"
 sleep 4
 clear
@@ -806,44 +2193,44 @@ show_install
 else
 echo ""
 fi
-sudo mkdir /etc/WinuOwn &>/dev/null
-sudo mkdir /etc/WinuOwn/safe &>/dev/null
-if [ -d /etc/WinuOwn ] 
+ mkdir /etc/WinuOwn
+ mkdir /etc/WinuOwn/safe > /dev/null 2>&1
+if [ -d /etc/WinuOwn ]
 then
-echo -e "${WARP}                   WinuOwn is now installed                                ${END}"
+echo  "${WARP}                   WinuOwn is now installed                                ${END}"
 sleep 3
 echo "You will need install John the ripper"
 echo "jumbo packege to make WinuOwn work."
 sleep 7
-  if [[ ! -x /etc/john ]];then 
-  echo -e "$warn\nNeed to install john the ripper"
+  if [[ ! -x /etc/john ]];then
+  echo  "$warn\nNeed to install john the ripper"
   sleep 1
-  echo -e "$q\nDo you want to do it now? (y/n)"
+  echo  "$q\nDo you want to do it now? (y/n)"
   read var
     if [[ $var == y ]];then
-    sudo apt-get install john
+     apt-get install john
     else
     echo""
     fi
-  fi  
+  fi
       if [[ ! -x /etc/bkhive ]];then
-      echo -e "$warn\nNeed to install bkhive"
+      echo  "$warn\nNeed to install bkhive"
       sleep 1
-      echo -e "$q\nDo you want to do it now? (y/n)"
+      echo  "$q\nDo you want to do it now? (y/n)"
       read var
         if [[ $var == y ]];then
-        sudo apt-get install bkhive
+         apt-get install bkhive
         else
         echo""
         fi
       fi
     	  if [[ ! -x /etc/samdump2 ]];then
-      echo -e "$warn\nNeed to install samdump2"
+      echo  "$warn\nNeed to install samdump2"
       sleep 1
-      echo -e "$q\nDo you want to do it now? (y/n)"
+      echo  "$q\nDo you want to do it now? (y/n)"
       read var
             if [[ $var == y ]];then
-        sudo apt-get install samdump2
+         apt-get install samdump2
         clear
         show_etcmenu
         else
@@ -851,11 +2238,11 @@ sleep 7
         show_etcmenu
             fi
           fi
-	
+
 else
-echo -e "${WARNING}Something went wrong and WinuOwn was not installed ${END}"
+echo  "${WARNING}Something went wrong and WinuOwn was not installed ${END}"
 sleep 4
-echo -e "${WARNING}                     Bye Bye                           ${END}"
+echo  "${WARNING}                     Bye Bye                           ${END}"
 sleep 2
 exit
 fi
@@ -865,45 +2252,45 @@ show_etcmenu
 
 installation3_fn()
 {
-echo -e "${SUCCESS}  Remember.. in order to make WinuOwn work in Fedora   ${END}"
-echo -e "${SUCCESS}   it needs to be executed in Root, if installation    ${END}"
-echo -e "${SUCCESS}   fails try to login as root and install again        ${END}"
+echo  "${SUCCESS}  Remember.. in order to make WinuOwn work in Fedora   ${END}"
+echo  "${SUCCESS}   it needs to be executed in Root, if installation    ${END}"
+echo  "${SUCCESS}   fails try to login as root and install again        ${END}"
 sleep 6
-sudo mkdir /etc/WinuOwn &>/dev/null
-sudo mkdir /etc/WinuOwn/safe &>/dev/null
-if [ -d /etc/WinuOwn ] 
+ mkdir /etc/WinuOwn
+ mkdir /etc/WinuOwn/safe > /dev/null 2>&1
+if [ -d /etc/WinuOwn ]
 then
-echo -e "${WARP}                   WinuOwn is now installed                                ${END}"
+echo  "${WARP}                   WinuOwn is now installed                                ${END}"
 sleep 3
   if [[ ! -x /usr/share/john ]];then
-  echo -e "$warn\nNeed to install john the ripper"
+  echo  "$warn\nNeed to install john the ripper"
   sleep 1
-  echo -e "$q\nDo you want to do it now? (y/n)"
+  echo  "$q\nDo you want to do it now? (y/n)"
   read var
     if [[ $var == y ]];then
-    sudo yum install john
+     yum install john
     else
     echo""
     fi
-  fi  
+  fi
       if [[ ! -x /usr/bin/bkhive ]];then
-      echo -e "$warn\nNeed to install john the ripper"
+      echo  "$warn\nNeed to install john the ripper"
       sleep 1
-      echo -e "$q\nDo you want to do it now? (y/n)"
+      echo  "$q\nDo you want to do it now? (y/n)"
       read var
         if [[ $var == y ]];then
-        sudo yum install bkhive
+         yum install bkhive
         else
         echo""
         fi
       fi
     	  if [[ ! -x /usr/bin/samdump2 ]];then
-      echo -e "$warn\nNeed to install samdump2"
+      echo  "$warn\nNeed to install samdump2"
       sleep 1
-      echo -e "$q\nDo you want to do it now? (y/n)"
+      echo  "$q\nDo you want to do it now? (y/n)"
       read var
             if [[ $var == y ]];then
-        sudo yum install samdump2
+         yum install samdump2
         clear
         show_etcmenu
         else
@@ -911,11 +2298,11 @@ sleep 3
         show_etcmenu
             fi
           fi
-	
+
 else
-echo -e "${WARNING}Something went wrong and WinuOwn was not installed ${END}"
+echo  "${WARNING}Something went wrong and WinuOwn was not installed ${END}"
 sleep 4
-echo -e "${WARNING}                     Bye Bye                           ${END}"
+echo  "${WARNING}                     Bye Bye                           ${END}"
 sleep 2
 exit
 fi
@@ -926,20 +2313,20 @@ show_etcmenu
 ##############################################Installation_options###################################################
 show_install()
 {
-    echo -e "${INTRO_TEXT}            Welcome to WinuOwn installation                   ${INTRO_TEXT}"
-    echo -e "${INTRO_TEXT} Please select the system you wish to install WinuOwn to  ${INTRO_TEXT}"
-    echo -e "${NORMAL}                                                              ${NORMAL}"
-    echo -e "${MENU}*************************WinuOwn*By*Webbhatt******************${NORMAL}"
-    echo -e "${NORMAL}                                                    ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 1)${MENU} Install to Kali Linux ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 2)${MENU} Install to Ubuntu ,unfinished build, for developers only. ${NORMAL}"
-    echo -e "${NORMAL}                                                    ${NORMAL}"
-    echo -e "${MENU}*************************WinuOwn*By*Webbhatt******************${NORMAL}"
-    echo -e "${ENTER_LINE}Please enter a menu option and enter or ${RED_TEXT}enter to exit. ${NORMAL}"
+    echo  "${INTRO_TEXT}            Welcome to WinuOwn installation                   ${INTRO_TEXT}"
+    echo  "${INTRO_TEXT} Please select the system you wish to install WinuOwn to  ${INTRO_TEXT}"
+    echo  "${NORMAL}                                                              ${NORMAL}"
+    echo  "${MENU}*************************WinuOwn*By*Webbhatt******************${NORMAL}"
+    echo  "${NORMAL}                                                    ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 1)${MENU} Install to Kali Linux ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 2)${MENU} Install to Ubuntu ,unfinished build, for developers only. ${NORMAL}"
+    echo  "${NORMAL}                                                    ${NORMAL}"
+    echo  "${MENU}*************************WinuOwn*By*Webbhatt******************${NORMAL}"
+    echo  "${ENTER_LINE}Please enter a menu option and enter or ${RED_TEXT}enter to exit. ${NORMAL}"
     read ops
     while [ ops != '' ]
     do
-    if [[ $ops = "" ]]; then 
+    if [[ $ops = "" ]]; then
             exit;
     else
         case $ops in
@@ -969,22 +2356,22 @@ done
 
 ##############################################menu############################################################
 show_menu(){
-    echo -e "${INTRO_TEXT} WinuOwn is a Windows passwords recovery tool    ${INTRO_TEXT}"
-    echo -e "${INTRO_TEXT}created for Kali linux by Pierre from Webbhatt  ${INTRO_TEXT}"
-    echo -e "${NORMAL}                                                    ${NORMAL}"
-    echo -e "${MENU}*****************WinuOwn*By*Webbhatt**************${NORMAL}"
-    echo -e "${NORMAL}                                                    ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 1)${MENU} Recover Windows login ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 2)${MENU} Remove saved Windows logins in WinuOwn-folder ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 3)${MENU} Restore previous session  ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 4)${MENU} Show cracked passwords ${NORMAL}"
-    echo -e "${NORMAL}                                                    ${NORMAL}"
-    echo -e "${MENU}*****************WinuOwn*By*Webbhatt**************${NORMAL}"
-    echo -e "${ENTER_LINE}Please enter a menu option and enter or ${RED_TEXT}enter to exit. ${NORMAL}"
+    echo  "${INTRO_TEXT} WinuOwn is a Windows passwords recovery tool    ${INTRO_TEXT}"
+    echo  "${INTRO_TEXT}created for Kali linux by Pierre from Webbhatt  ${INTRO_TEXT}"
+    echo  "${NORMAL}                                                    ${NORMAL}"
+    echo  "${MENU}*****************WinuOwn*By*Webbhatt**************${NORMAL}"
+    echo  "${NORMAL}                                                    ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 1)${MENU} Recover Windows login ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 2)${MENU} Remove saved Windows logins in WinuOwn-folder ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 3)${MENU} Restore previous session  ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 4)${MENU} Show cracked passwords ${NORMAL}"
+    echo  "${NORMAL}                                                    ${NORMAL}"
+    echo  "${MENU}*****************WinuOwn*By*Webbhatt**************${NORMAL}"
+    echo  "${ENTER_LINE}Please enter a menu option and enter or ${RED_TEXT}enter to exit. ${NORMAL}"
     read opt
     while [ opt != '' ]
     do
-    if [[ $opt = "" ]]; then 
+    if [ $opt = "" ]; then
             exit;
     else
         case $opt in
@@ -1022,31 +2409,31 @@ show_menu(){
 fi
 done
 }
-function option_picked() {
+option_picked() {
     COLOR='\033[01;31m' # bold red
     RESET='\033[00;00m' # normal white
     MESSAGE=${@:-"${RESET}Error: No message passed"}
-    echo -e "${COLOR}${MESSAGE}${RESET}"
+    echo  "${COLOR}${MESSAGE}${RESET}"
 }
 clear
 ####################################menu_for_etc###########################################################
 show_etcmenu(){
-    echo -e "${INTRO_TEXT} WinuOwn is a Windows passwords recovery tool    ${INTRO_TEXT}"
-    echo -e "${INTRO_TEXT}created for Kali linux by Pierre from Webbhatt  ${INTRO_TEXT}"
-    echo -e "${NORMAL}                                                    ${NORMAL}"
-    echo -e "${MENU}*****************WinuOwn*By*Webbhatt**************${NORMAL}"
-    echo -e "${NORMAL}                                                    ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 1)${MENU} Recover Windows login ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 2)${MENU} Remove saved Windows logins in WinuOwn-folder ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 3)${MENU} Restore previous session  ${NORMAL}"
-    echo -e "${MENU}*${NUMBER} 4)${MENU} Show cracked passwords ${NORMAL}"
-    echo -e "${NORMAL}                                                    ${NORMAL}"
-    echo -e "${MENU}*****************WinuOwn*By*Webbhatt**************${NORMAL}"
-    echo -e "${ENTER_LINE}Please enter a menu option and enter or ${RED_TEXT}enter to exit. ${NORMAL}"
+    echo  "${INTRO_TEXT} WinuOwn is a Windows passwords recovery tool    ${INTRO_TEXT}"
+    echo  "${INTRO_TEXT}created for Kali linux by Pierre from Webbhatt  ${INTRO_TEXT}"
+    echo  "${NORMAL}                                                    ${NORMAL}"
+    echo  "${MENU}*****************WinuOwn*By*Webbhatt**************${NORMAL}"
+    echo  "${NORMAL}                                                    ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 1)${MENU} Recover Windows login ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 2)${MENU} Remove saved Windows logins in WinuOwn-folder ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 3)${MENU} Restore previous session  ${NORMAL}"
+    echo  "${MENU}*${NUMBER} 4)${MENU} Show cracked passwords ${NORMAL}"
+    echo  "${NORMAL}                                                    ${NORMAL}"
+    echo  "${MENU}*****************WinuOwn*By*Webbhatt**************${NORMAL}"
+    echo  "${ENTER_LINE}Please enter a menu option and enter or ${RED_TEXT}enter to exit. ${NORMAL}"
     read opt
     while [ opt != '' ]
     do
-    if [[ $opt = "" ]]; then 
+    if [[ $opt = "" ]]; then
             exit;
     else
         case $opt in
@@ -1084,11 +2471,11 @@ show_etcmenu(){
 fi
 done
 }
-function option_picked() {
+option_picked() {
     COLOR='\033[01;31m' # bold red
     RESET='\033[00;00m' # normal white
     MESSAGE=${@:-"${RESET}Error: No message passed"}
-    echo -e "${COLOR}${MESSAGE}${RESET}"
+    echo  "${COLOR}${MESSAGE}${RESET}"
 }
 
 #########################################pre-install##############################################
@@ -1097,31 +2484,32 @@ newworld_fn()
 {
 
 if [ -d /etc/WinuOwn ]
-then 
- if [ -d /root/.john ]
- then 
+then
+ if [ -d /etc/john ]
+ then
  show_menu
  else
- show_etcmenu
+ echo "null"
+ #show_etcmenu
  fi
 else
-echo -e "${INFOS}                                                                           ${END}"
-echo -e "${INFOS}  This script is written by Pierre a.k.a Linoge, admin of Webbhatt         ${END}"
-echo -e "${INFOS}                                                                           ${END}"
-echo -e "${INFOS}                                                                           ${END}"
-echo -e "${INFOS}  WinuOwn will create WinuOwn-folder in /etc/ were files will be saved     ${END}"
-echo -e "${INFOS}           and if if necessary ask to install other programs               ${END}"
-echo -e "${INFOS}                                                                           ${END}"
-echo -e "${WARNING}    Disclaimer: This script is intended for use only for private study     ${END}"
-echo -e "${WARNING} or during an authorised recovery, The author bears no responsibility      ${END}"
-echo -e "${WARNING}                  for malicious or illegal use.                            ${END}"
-echo -e "${WARNING}                 Skiddies should look elsewhere.                           ${END}"
+echo  "${INFOS}                                                                           ${END}"
+echo  "${INFOS}  This script is written by Pierre a.k.a Linoge, admin of Webbhatt         ${END}"
+echo  "${INFOS}                                                                           ${END}"
+echo  "${INFOS}                                                                           ${END}"
+echo  "${INFOS}  WinuOwn will create WinuOwn-folder in /etc/ were files will be saved     ${END}"
+echo  "${INFOS}           and if if necessary ask to install other programs               ${END}"
+echo  "${INFOS}                                                                           ${END}"
+echo  "${WARNING}    Disclaimer: This script is intended for use only for private study     ${END}"
+echo  "${WARNING} or during an authorised recovery, The author bears no responsibility      ${END}"
+echo  "${WARNING}                  for malicious or illegal use.                            ${END}"
+echo  "${WARNING}                 Skiddies should look elsewhere.                           ${END}"
    read -p 'you agree to the terms? ? (y/n)?' yn
    case $yn in
     [Yy]* ) clear
             update_fn;;
     [Nn]* ) echo "Exiting" $ver
-            sleep 2        
+            sleep 2
             exit ;;
     * ) echo 'Please answer yes or no.';;
    esac
@@ -1134,17 +2522,17 @@ fi
 update_fn()
 {
 if [ -d /root/.Winpwn ]
-then 
-echo -e "${INFOS} You have an old version of WinuOwn installed on this device (WinPwn) ${END}"
+then
+echo  "${INFOS} You have an old version of WinuOwn installed on this device (WinPwn) ${END}"
 read -p 'Would you like me to delete the old folder and all the data (y/n)?' yn
    case $yn in
-    [Yy]* ) rmdir --ignore-fail-on-non-empty /root/.Winpwn
+    [Yy]* ) rm -rf /root/.Winpwn
             clear
-            show_install;; 
-            
-    [Nn]* ) clear 
+            show_install;;
+
+    [Nn]* ) clear
            show_install;;
-           
+
     * ) echo 'Please answer yes or no.';;
    esac
 clear
